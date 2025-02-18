@@ -219,18 +219,18 @@ class CheckOutView(View):
 
             # {rzp_order_id,amount,rzp_key_id}
 
-            context={
+            # context={
 
-                "rzp_key_id":RZP_KEY_ID,
+            #     "rzp_key_id":RZP_KEY_ID,
 
-                "amount" : order_total,
+            #     "amount" : order_total,
 
-                "rzp_order_id" : rzp_id,
+            #     "rzp_order_id" : rzp_id,
 
 
-            }
+            # }
 
-            return render(request,"payment.html",context)
+            return render(request,"payment.html")
 
         elif order_total == 0:
 

@@ -44,7 +44,27 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'instructor',
     'embed_video',
-    "student"
+    "student",
+
+    # Enabling social Authentication
+
+    "django.contrib.sites",
+    'allauth',
+    'allauth.account',
+
+    'allauth.socialaccount',
+
+    'allauth.socialaccount.providers.google',
+
+]
+AUTHENTICATION_BACKENDS = [
+    
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+
 ]
 
 MIDDLEWARE = [
@@ -53,9 +73,13 @@ MIDDLEWARE = [
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware', 
+    # Add the account middleware:
+    "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+
 
 ROOT_URLCONF = 'CourseCloud.urls'
 
@@ -138,3 +162,30 @@ AUTH_USER_MODEL = 'instructor.User'
 #     "SITE_HEADER": "Ajay Rajendran",
 #     "SITE_URL": "/admin/",  # Change if needed
 # }
+
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+    'google': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            
+             'client_id':"808503958229-3csm90nc4hc2d97juvaqjipqbjvqrqig.apps.googleusercontent.com",
+             
+             'secret':"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",
+            
+        }
+    }
+}
+
+
+SITE_ID=1
+
+LOGIN_URL="signin"
+
+LOGIN_REDIRECT_URL="index"
+
+SOCIALACCOUNT_LOGIN_ON_GET=True
+
