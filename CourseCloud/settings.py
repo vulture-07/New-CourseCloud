@@ -172,9 +172,9 @@ SOCIALACCOUNT_PROVIDERS = {
         # credentials, or list them here:
         'APP': {
             
-             'client_id':"808503958229-3csm90nc4hc2d97juvaqjipqbjvqrqig.apps.googleusercontent.com",
+             'client_id':config("client_id"),
              
-             'secret':"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",
+             'secret':config("secret"),
             
         }
     }
